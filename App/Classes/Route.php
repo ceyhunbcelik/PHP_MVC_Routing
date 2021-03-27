@@ -22,8 +22,6 @@ class Route{
 
       $url = str_replace(array_keys($patterns), array_values($patterns), $url);
 
-      global $subdomain;
-
       $request_uri = self::parse_url();
 
       if(preg_match('@^' . $url . '$@', $request_uri, $parameters)){
@@ -40,7 +38,7 @@ class Route{
         $className = explode('/', $controller[0]);
         $className = end($className);
 
-        $controllerFile = PATH . '/App/Subdomains/' . $subdomain . '/Controllers/' . $controller[0] . '.php';
+        $controllerFile = PATH . '/App/Subdomains/' . SUBDOMAIN . '/Controllers/' . $controller[0] . '.php';
 
         if(file_exists($controllerFile)){
           require_once($controllerFile);

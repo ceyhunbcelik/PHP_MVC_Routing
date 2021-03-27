@@ -3,7 +3,6 @@
 class Users extends Controller{
 
   public function index(){
-
     $userListModel = $this -> model('UserList');
     $users = $userListModel -> getAll();
 

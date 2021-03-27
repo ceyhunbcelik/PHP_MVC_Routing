@@ -1,6 +1,6 @@
 <?php
 
-class UserList extends Model{
+class UserList extends Database{
 
   public function getAll(){
 

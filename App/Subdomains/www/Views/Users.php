@@ -2,9 +2,13 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="<?= css('users') ?>">
     <title></title>
   </head>
   <body>
+
+    <?php require_once(container('Header')) ?>
+
     <h1>USERS PAGE</h1>
 
     <form method="POST">
