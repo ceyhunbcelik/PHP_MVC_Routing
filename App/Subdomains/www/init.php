@@ -1,5 +1,6 @@
 <?php
 
 # Routers
-foreach(glob(__DIR__ . '/Routers/*.php') as $routerFile)
+foreach(glob(__DIR__ . '/Routes/*.php') as $routerFile){
   require_once($routerFile);
+}

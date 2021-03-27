@@ -1,18 +1,12 @@
 <?php
 
-
-/*
-$url = '/user/ceyhun';
-preg_match('@^/user/([0-9a-zA-Z]+)$@', $url, $parameters);
-print_r($parameters);
-*/
-
-
-
-foreach(glob(__DIR__ . '/App/Classes/*.php') as $routerFile)
-  require_once($routerFile);
+define('PATH', realpath('.'));
 
 $subdomain = 'www';
+
+foreach(glob(__DIR__ . '/App/Classes/*.php') as $routerFile){
+  require_once($routerFile);
+}
 
 switch ($subdomain) {
   case 'www':
