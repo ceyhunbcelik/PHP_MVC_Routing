@@ -11,41 +11,44 @@ class Route{
 
   public static function run($url, $callback, $method = 'GET'){
 
-    $patterns = [
-      '{url}' => '([0-9a-zA-Z]+)',
-      '{id}'  => '([0-9]+)'
-    ];
+    $method = explode('|', strtoupper($method));
 
-    $url = str_replace(array_keys($patterns), array_values($patterns), $url);
+    if(in_array($_SERVER['REQUEST_METHOD'], $method)){
 
-    global $subdomain;
+      $patterns = [
+        '{url}' => '([0-9a-zA-Z]+)',
+        '{id}'  => '([0-9]+)'
+      ];
 
-    $request_uri = self::parse_url();
+      $url = str_replace(array_keys($patterns), array_values($patterns), $url);
 
-    if(preg_match('@^' . $url . '$@', $request_uri, $parameters)){
+      global $subdomain;
 
-      unset($parameters[0]);
+      $request_uri = self::parse_url();
 
-      if(is_callable($callback)){
-        call_user_func_array($callback, $parameters);
-        exit;
+      if(preg_match('@^' . $url . '$@', $request_uri, $parameters)){
+
+        unset($parameters[0]);
+
+        if(is_callable($callback)){
+          call_user_func_array($callback, $parameters);
+          exit;
+        }
+
+        $controller = explode('@', $callback);
+
+        $className = explode('/', $controller[0]);
+        $className = end($className);
+
+        $controllerFile = PATH . '/App/Subdomains/' . $subdomain . '/Controllers/' . $controller[0] . '.php';
+
+        if(file_exists($controllerFile)){
+          require_once($controllerFile);
+
+          call_user_func_array([new $className, $controller[1]], $parameters);
+        }
+
       }
-
-      $controller = explode('@', $callback);
-
-      $className = explode('/', $controller[0]);
-      $className = end($className);
-
-      $controllerFile = PATH . '/App/Subdomains/' . $subdomain . '/Controllers/' . $controller[0] . '.php';
-
-      if(file_exists($controllerFile)){
-        require_once($controllerFile);
-
-        call_user_func_array([new $className, $controller[1]], $parameters);
-      }
-
     }
-
   }
-
 }

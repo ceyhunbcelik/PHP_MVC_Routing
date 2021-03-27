@@ -11,7 +11,11 @@ class Controller{
   }
 
   public function model($name){
-    //
+
+    global $subdomain;
+
+    require_once(PATH . '/App/Subdomains/' . $subdomain . '/Models/' . $name . '.php');
+    return new $name();
   }
 
 }
