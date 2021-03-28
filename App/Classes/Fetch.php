@@ -1,6 +1,6 @@
 <?php
 
-class API{
+class FETCH{
 
   public static function URL_MAIN($query, $api = API){
     return $api . $query . API_MAIN_KEY;

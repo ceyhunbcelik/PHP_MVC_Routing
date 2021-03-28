@@ -3,8 +3,8 @@
 class Curl{
   public function index(){
 
-    $source = API::GET(API::URL_MAIN('/users/api'));
-    //$source = API::GET('https://jsonplaceholder.typicode.com/users');
+    $source = FETCH::GET(FETCH::URL_MAIN('/users/api'));
+    //$source = FETCH::GET('https://jsonplaceholder.typicode.com/users');
 
     print_r($source);
   }
