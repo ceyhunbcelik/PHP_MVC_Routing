@@ -1,6 +1,6 @@
 <?php
 
-class Curl{
+class Fetch{
   public function index(){
 
     $source = FETCH::GET(FETCH::URL_MAIN('/users/api'));
