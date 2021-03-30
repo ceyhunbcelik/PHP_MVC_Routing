@@ -17,7 +17,7 @@ define('SUBFOLDER', Atlas::subfolder());
 define('URL', Atlas::url());
 define('SUBDOMAIN', $mode == 'DEVELOPMENT' ? $default_subdomain : Atlas::subdomain());
 define('API', 'http://localhost/PHP_MVC_Routing');
-define('API_MAIN_KEY', '/API_MAIN_ACCESS');
+define('API_MAIN_KEY', 'API_MAIN_ACCESS');
 
 $route = Atlas::route();
 

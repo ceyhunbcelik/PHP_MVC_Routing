@@ -12,11 +12,11 @@ class Users extends Controller{
   }
 
   public function post(){
-    print_r($_POST);
+    print_r(json_encode($_POST));
   }
 
   public function api(){
-    
+
     $userListModel = $this -> model('UserList');
     $users = $userListModel -> getAll();
 

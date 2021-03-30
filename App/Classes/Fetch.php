@@ -3,7 +3,7 @@
 class FETCH{
 
   public static function URL_MAIN($query, $api = API){
-    return $api . $query . API_MAIN_KEY;
+    return $api . $query . '/' . API_MAIN_KEY;
   }
 
   public static function GET($api){
@@ -24,8 +24,22 @@ class FETCH{
 
   }
 
-  public static function POST(){
-    //
+  public static function POST($api, $data){
+    $ch = curl_init();
+
+    curl_setopt_array($ch, [
+      CURLOPT_URL => $api,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_POST => true,
+      CURLOPT_POSTFIELDS => $data
+    ]);
+
+    $source = json_decode(curl_exec($ch), true);
+
+    curl_close($ch);
+
+    return $source;
+
   }
 
 }
