@@ -5,7 +5,7 @@ class Api{
   public function get(){
     $source = FETCH::GET(FETCH::URL_MAIN('/users/api'));
 
-    print_r($source[2]['username']);
+    print_r($source);
   }
 
   public function post(){

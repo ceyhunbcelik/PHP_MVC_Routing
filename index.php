@@ -2,24 +2,22 @@
 
 require_once(__DIR__ . '/App/Atlas.php');
 
-$_GET = array_map(function($get){
-  return htmlspecialchars(trim($get));
-}, $_GET);
-
-$domain = 'https://www.ceyhunbase.com/';
 $mode = 'DEVELOPMENT';
+$domain = 'https://www.ceyhunbase.com/';
 $default_subdomain = 'www';
 
-session_start();
-
+# Directory
 define('PATH', realpath('.'));
 define('SUBFOLDER', Atlas::subfolder());
+define('ROUTE', Atlas::route());
+
+# URL
 define('URL', Atlas::url());
 define('SUBDOMAIN', $mode == 'DEVELOPMENT' ? $default_subdomain : Atlas::subdomain());
+
+# API
 define('API', 'http://localhost/PHP_MVC_Routing');
 define('API_MAIN_KEY', 'API_MAIN_ACCESS');
-
-$route = Atlas::route();
 
 # Classes
 foreach(glob(__DIR__ . '/App/Classes/*.php') as $routerFile){

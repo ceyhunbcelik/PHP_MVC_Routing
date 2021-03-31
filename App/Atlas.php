@@ -1,5 +1,11 @@
 <?php
 
+$_GET = array_map(function($get){
+  return htmlspecialchars(trim($get));
+}, $_GET);
+
+session_start();
+
 class Atlas{
 
   public static function url(){
@@ -40,17 +46,13 @@ class Atlas{
       if(!empty($val))
         $route [] = $val;
 
-    if(SUBFOLDER != null)
+    if(SUBFOLDER != 'null')
       array_shift($route);
 
     if(!isset($route[0]) || $route[0] == 'direct')
       $route[0] = 'index';
 
     return $route;
-  }
-
-  public static function folder(){
-
   }
 
 }
