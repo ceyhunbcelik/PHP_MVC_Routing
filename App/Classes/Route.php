@@ -6,6 +6,7 @@ class Route{
     $dirname = dirname($_SERVER['SCRIPT_NAME']);
     $basename = basename($_SERVER['SCRIPT_NAME']);
     $request_uri = str_replace([$dirname, $basename], null, $_SERVER['REQUEST_URI']);
+    $request_uri = $request_uri[0] == '/' ? $request_uri : '/' . $request_uri;
     return $request_uri;
   }
 
