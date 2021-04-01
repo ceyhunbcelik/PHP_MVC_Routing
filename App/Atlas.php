@@ -46,7 +46,7 @@ class Atlas{
       if(!empty($val))
         $route [] = $val;
 
-    if(SUBFOLDER != 'null')
+    if(SUBFOLDER != '')
       array_shift($route);
 
     if(!isset($route[0]) || $route[0] == 'direct')

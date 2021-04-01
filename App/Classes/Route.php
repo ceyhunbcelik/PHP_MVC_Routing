@@ -3,11 +3,7 @@
 class Route{
 
   public static function parse_url(){
-    $dirname = dirname($_SERVER['SCRIPT_NAME']);
-    $basename = basename($_SERVER['SCRIPT_NAME']);
-    $request_uri = str_replace([$dirname, $basename], null, $_SERVER['REQUEST_URI']);
-    $request_uri = $request_uri[0] == '/' ? $request_uri : '/' . $request_uri;
-    return $request_uri;
+    return COUNT(ROUTE) == 1 && ROUTE[0] == 'index' ? '/' : '/' . implode('/', ROUTE);
   }
 
   public static function run($url, $callback, $method = 'GET'){
