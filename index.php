@@ -2,6 +2,10 @@
 
 require_once(__DIR__ . '/App/Atlas.php');
 
+# Cors
+header("Access-Control-Allow-Origin: *");
+
+# Development & Server Mode
 $mode = 'DEVELOPMENT';
 $domain = 'https://www.ceyhunbase.com/';
 $default_subdomain = 'www';

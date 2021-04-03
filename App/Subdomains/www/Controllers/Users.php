@@ -12,7 +12,7 @@ class Users extends Controller{
   }
 
   public function post(){
-    print_r(json_encode($_POST));
+    print_r(json_encode($_POST, JSON_UNESCAPED_UNICODE));
   }
 
   public function api(){
@@ -20,7 +20,7 @@ class Users extends Controller{
     $userListModel = $this -> model('UserList');
     $users = $userListModel -> getAll();
 
-    print_r(json_encode($users));
+    print_r(json_encode($users, JSON_UNESCAPED_UNICODE));
   }
 
 }
