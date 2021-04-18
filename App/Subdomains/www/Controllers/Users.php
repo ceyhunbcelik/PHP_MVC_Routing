@@ -12,7 +12,18 @@ class Users extends Controller{
   }
 
   public function post(){
-    print_r(json_encode($_POST, JSON_UNESCAPED_UNICODE));
+    print_r(FETCH::POST_REACT());
+
+    /*
+    $json = new stdClass();
+    $json -> company = 'Facebook';
+    $json -> job = 'Computer Engineer';
+    $json -> technologies = 'React.js, PHP, MySQL';
+
+    $collect_json = json_encode($json);
+
+    echo $collect_json;
+    */
   }
 
   public function api(){

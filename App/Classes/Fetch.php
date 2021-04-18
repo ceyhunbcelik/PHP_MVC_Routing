@@ -42,4 +42,8 @@ class FETCH{
 
   }
 
+  public static function POST_REACT(){
+    return json_encode(json_decode(file_get_contents("php://input"), true), JSON_UNESCAPED_UNICODE);
+  }
+
 }
