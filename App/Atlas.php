@@ -6,53 +6,70 @@ $_GET = array_map(function($get){
 
 session_start();
 
-class Atlas{
+# Cors
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Methods: GET, POST");
 
-  public static function url(){
-    $protocol = isset($_SERVER['REQUEST_SCHEME']) ? $_SERVER['REQUEST_SCHEME'] : "http";
-    $script   = dirname($_SERVER['SCRIPT_NAME']) == "\\" || dirname($_SERVER['SCRIPT_NAME']) == '/'
-      ? '/'
-      : dirname($_SERVER['SCRIPT_NAME']) . '/';
+define('PATH', realpath('.'));
 
-    return $protocol . '://' . $_SERVER['HTTP_HOST'] . $script;
+function subfolder(){
+  if(dirname($_SERVER['SCRIPT_NAME']) === '\\' || dirname($_SERVER['SCRIPT_NAME']) == '/'){
+    return null;
+  } else{
+    $folder = explode('/', PATH);
+    $folder = '/' . end($folder);
+
+    return $folder;
   }
+}
 
-  public static function subfolder(){
-    if(dirname($_SERVER['SCRIPT_NAME']) === '\\' || dirname($_SERVER['SCRIPT_NAME']) == '/'){
-      return null;
-    } else{
-      $folder = explode('/', PATH);
-      $folder = '/' . end($folder);
+define('SUBFOLDER', subfolder());
 
-      return $folder;
-    }
+function route(){
+  $request = explode("?", $_SERVER['REQUEST_URI']);
+  $request = explode('/', $request[0]);
+
+  foreach ($request as $val)
+    if(!empty($val))
+      $route [] = $val;
+
+  if(SUBFOLDER != '')
+    array_shift($route);
+
+  if(!isset($route[0]) || $route[0] == 'direct')
+    $route[0] = 'index';
+
+  return $route;
+}
+
+define('ROUTE', route());
+
+function url(){
+  $protocol = isset($_SERVER['REQUEST_SCHEME']) ? $_SERVER['REQUEST_SCHEME'] : "http";
+  $script   = dirname($_SERVER['SCRIPT_NAME']) == "\\" || dirname($_SERVER['SCRIPT_NAME']) == '/'
+    ? '/'
+    : dirname($_SERVER['SCRIPT_NAME']) . '/';
+
+  return $protocol . '://' . $_SERVER['HTTP_HOST'] . $script;
+}
+
+function subdomain(){
+  global $domain;
+  $subdomain = explode('.', $_SERVER['HTTP_HOST']);
+
+  if (count($subdomain) != 3) {
+    Header('Location:' . $domain);
   }
+  return $subdomain[0];
+}
 
-  public static function subdomain(){
-    global $domain;
-    $subdomain = explode('.', $_SERVER['HTTP_HOST']);
+# Classes
+foreach(glob(__DIR__ . '/Classes/*.php') as $routerFile){
+  require_once($routerFile);
+}
 
-    if (count($subdomain) != 3) {
-      Header('Location:' . $domain);
-    }
-    return $subdomain[0];
-  }
-
-  public static function route(){
-    $request = explode("?", $_SERVER['REQUEST_URI']);
-    $request = explode('/', $request[0]);
-
-    foreach ($request as $val)
-      if(!empty($val))
-        $route [] = $val;
-
-    if(SUBFOLDER != '')
-      array_shift($route);
-
-    if(!isset($route[0]) || $route[0] == 'direct')
-      $route[0] = 'index';
-
-    return $route;
-  }
-
+# Functions
+foreach(glob(__DIR__ . '/Functions/*.php') as $routerFile){
+  require_once($routerFile);
 }
