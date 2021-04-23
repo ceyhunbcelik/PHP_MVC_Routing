@@ -1,5 +1,9 @@
 <?php
 
+function component($name){
+  return PATH . '/App/Subdomains/' . SUBDOMAIN . '/Components/' . $name . '.php';
+}
+
 function container($name){
   return PATH . '/App/Subdomains/' . SUBDOMAIN . '/Containers/' . $name . '.php';
 }
@@ -16,7 +20,11 @@ function js($name){
   return URL . '/Public/' . SUBDOMAIN . '/js/' . strtolower($name) . '.js';
 }
 
+function href($query){
+  return URL . $query;
+}
+
 function redirect($query){
-  Header('Location:' . SUBFOLDER . $query);
+  Header('Location:' . URL . $query);
   exit;
 }

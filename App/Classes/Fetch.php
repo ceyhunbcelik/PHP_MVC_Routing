@@ -2,8 +2,8 @@
 
 class FETCH{
 
-  public static function URL_MAIN($query, $api = URL){
-    return $api . $query . '/' . API_MAIN_KEY;
+  public static function URL_MAIN($query){
+    return API_MAIN_URL . API_MAIN_KEY . '/' . $query;
   }
 
   public static function GET($api){

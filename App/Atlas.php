@@ -64,6 +64,8 @@ function subdomain(){
   return $subdomain[0];
 }
 
+define('SUBDOMAIN', $dev ? $dev_sub : subdomain());
+
 # Classes
 foreach(glob(__DIR__ . '/Classes/*.php') as $routerFile){
   require_once($routerFile);
