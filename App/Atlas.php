@@ -39,7 +39,7 @@ function route(){
 define('ROUTE', route());
 
 function url(){
-  $protocol = "https";
+  $protocol = 'https';
   $script   = dirname($_SERVER['SCRIPT_NAME']) == "\\" || dirname($_SERVER['SCRIPT_NAME']) == '/'
     ? '/'
     : dirname($_SERVER['SCRIPT_NAME']) . '/';

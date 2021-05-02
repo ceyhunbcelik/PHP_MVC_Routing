@@ -4,8 +4,8 @@ class Home extends Controller{
 
     public function index(){
 
-        $lat = isset($_GET['lat']) ? $_GET['lat'] : '37.035339';
-        $lon = isset($_GET['lon']) ? $_GET['lon'] : '27.43029';
+        $lat = isset($_GET['lat']) && !empty($_GET['lat']) && is_float(floatval($_GET['lat'])) ? $_GET['lat'] : '37.035339';
+        $lon = isset($_GET['lon']) && !empty($_GET['lon']) && is_float(floatval($_GET['lon'])) ? $_GET['lon'] : '27.43029';
 
         $cities    = FETCH::GET(json('cities'));
         $distances = self::distance($lat, $lon, $cities);
