@@ -10,7 +10,7 @@
         
         <script src="<?= js('jquery-3.6.0.min') ?>"></script>
         
-        <title>Document</title>
+        <title>Google Maps Latitude&Longitude</title>
     </head>
     <body>
         <main>
