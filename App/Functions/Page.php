@@ -8,6 +8,10 @@ function css($name){
   return URL . '/Public/css/' . strtolower($name) . '.css';
 }
 
+function favico($name){
+  return URL . '/Public/favico/' . $name;
+}
+
 function js($name){
   return URL . '/Public/js/' . strtolower($name) . '.js';
 }

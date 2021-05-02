@@ -7,6 +7,7 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link rel="stylesheet" href="<?= css('index') ?>">
+        <?php require_once(container('Favico')) ?>
         
         <script src="<?= js('jquery-3.6.0.min') ?>"></script>
         
