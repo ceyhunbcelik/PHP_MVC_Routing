@@ -24,7 +24,7 @@ function href($query){
   return URL . $query;
 }
 
-function redirect($query){
+function redirect($query = NULL){
   Header('Location:' . URL . $query);
   exit;
 }

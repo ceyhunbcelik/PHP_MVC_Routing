@@ -5,8 +5,8 @@ $lang_list = [
   'en' => 'English'
 ];
 
-$lang_tr = require_once(PATH . '/App/Language/tr.php');
-$lang_en = require_once(PATH . '/App/Language/en.php');
+$lang_tr = require_once(PATH . '/App/Module/Language/tr.php');
+$lang_en = require_once(PATH . '/App/Module/Language/en.php');
 
 function language(){
   if(isset($_SESSION['lang'])){

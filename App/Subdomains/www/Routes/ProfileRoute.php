@@ -1,3 +1,3 @@
 <?php
 
-Route::run('/profile/change-password', 'Profile/changepassword@index');
+Route::run('/profile/change-password', 'Profile/changepassword@index', 0);
