@@ -1,0 +1,145 @@
+body{
+    background-color: rgb(249, 249, 249);
+}
+
+a{
+    text-decoration: none;
+}
+
+select{
+    padding: 5px;
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px;
+    background-color: rgb(252, 252, 252);
+    border: 1px solid rgb(231, 231, 231);
+}
+
+input{
+    padding: 5px;
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px;
+    background-color: rgb(252, 252, 252);
+    border: 1px solid rgb(231, 231, 231);
+}
+
+button{
+    width: 100%;
+    height: 30px;
+    font-size: 17px;
+    border: none;
+    color: #FFF;
+    background-color: darkorange;
+    -webkit-box-shadow: 0px 0px 10px -3px rgba(169,169,169,1);
+    -moz-box-shadow: 0px 0px 10px -3px rgba(169,169,169,1);
+    box-shadow: 0px 0px 10px -3px rgba(169,169,169,1);
+}
+
+.fa-map{
+    color: rgb(34, 165, 99)
+}
+
+.fa-map-marker-alt{
+    color: rgb(187, 28, 7);
+}
+
+p.title{
+    font-size: 18px;
+    font-weight: 100;
+}
+
+p.county{
+    display: none;
+}
+
+select#county{
+    display: none;
+}
+
+main{
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.wrapper{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.col1{
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 350px;
+}
+
+.col1-row1{
+    padding: 15px;
+    height: 235px;
+    background-color: #FFF;
+    -webkit-box-shadow: 0px 0px 10px -3px rgba(169,169,169,1);
+    -moz-box-shadow: 0px 0px 10px -3px rgba(169,169,169,1);
+    box-shadow: 0px 0px 10px -3px rgba(169,169,169,1);
+}
+
+.col1-row2{
+    padding: 15px;
+    height: 235px;
+    background-color: #FFF;
+    -webkit-box-shadow: 0px 0px 10px -3px rgba(169,169,169,1);
+    -moz-box-shadow: 0px 0px 10px -3px rgba(169,169,169,1);
+    box-shadow: 0px 0px 10px -3px rgba(169,169,169,1);
+}
+
+.col2{
+    background-color: #FFF;
+    padding: 25px;
+    width: calc(100% - 50px);
+    max-width: 575px;
+    height: 500px;
+    -webkit-box-shadow: 0px 0px 10px -3px rgba(169,169,169,1);
+    -moz-box-shadow: 0px 0px 10px -3px rgba(169,169,169,1);
+    box-shadow: 0px 0px 10px -3px rgba(169,169,169,1);
+}
+
+table{
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+table tr th{
+    color: rgb(78, 141, 254);
+}
+
+table tr td{
+    color: #222;
+}
+
+.col2 iframe{
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 768px){
+    
+    .wrapper{
+        display: block;
+    }
+
+    .col1{
+        width: 100%;
+    }
+
+    .col2{
+        margin-top: 20px;
+        padding: 15px;
+        width: calc(100% - 30px);
+    }
+
+
+}

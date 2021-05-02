@@ -4,13 +4,6 @@ $_GET = array_map(function($get){
   return htmlspecialchars(trim($get));
 }, $_GET);
 
-session_start();
-
-# Cors
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Access-Control-Allow-Methods: GET, POST");
-
 define('PATH', realpath('.'));
 
 function subfolder(){
@@ -54,17 +47,7 @@ function url(){
   return $protocol . '://' . $_SERVER['HTTP_HOST'] . $script;
 }
 
-function subdomain(){
-  global $domain;
-  $subdomain = explode('.', $_SERVER['HTTP_HOST']);
-
-  if (count($subdomain) != 3) {
-    Header('Location:' . $domain);
-  }
-  return $subdomain[0];
-}
-
-define('SUBDOMAIN', $dev ? $dev_sub : subdomain());
+define('URL', url());
 
 # Classes
 foreach(glob(__DIR__ . '/Classes/*.php') as $routerFile){
