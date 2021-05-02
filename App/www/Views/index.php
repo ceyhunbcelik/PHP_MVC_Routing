@@ -25,5 +25,6 @@
                 <div class="col2"><?php require_once(container('Map')) ?></div>
             </div>
         </main> 
+        <footer>2021 &#169; CEYHUN BAHADIR ÇELİK</footer>
     </body>
 </html>

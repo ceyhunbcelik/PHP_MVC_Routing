@@ -125,6 +125,13 @@ table tr td{
     height: 100%;
 }
 
+footer{
+    text-align: center;
+    font-size: 14px;
+    color: #A9A9A9;
+    margin-top: 20px;
+}
+
 @media screen and (max-width: 768px){
     
     .wrapper{
