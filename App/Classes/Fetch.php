@@ -2,6 +2,10 @@
 
 class FETCH{
 
+  public static function URL_MAIN($query){
+    return API_MAIN_URL . API_MAIN_KEY . '/' . $query;
+  }
+
   public static function GET($api){
     $ch = curl_init();
 
@@ -36,6 +40,10 @@ class FETCH{
 
     return $source;
 
+  }
+
+  public static function POST_REACT(){
+    return json_encode(json_decode(file_get_contents("php://input"), true), JSON_UNESCAPED_UNICODE);
   }
 
 }

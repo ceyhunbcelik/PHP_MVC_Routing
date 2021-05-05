@@ -1,21 +1,30 @@
 <?php
 
+function component($name){
+  return PATH . '/App/Subdomains/' . SUBDOMAIN . '/Components/' . $name . '.php';
+}
+
 function container($name){
-  return PATH . '/App/www/Containers/' . $name . '.php';
+  return PATH . '/App/Subdomains/' . SUBDOMAIN . '/Containers/' . $name . '.php';
+}
+
+function img($name){
+  return URL . '/Public/' . SUBDOMAIN . '/img/' . strtolower($name);
 }
 
 function css($name){
-  return URL . '/Public/css/' . strtolower($name) . '.css';
-}
-
-function favico($name){
-  return URL . '/Public/favico/' . $name;
+  return URL . '/Public/' . SUBDOMAIN . '/css/' . strtolower($name) . '.css';
 }
 
 function js($name){
-  return URL . '/Public/js/' . strtolower($name) . '.js';
+  return URL . '/Public/' . SUBDOMAIN . '/js/' . strtolower($name) . '.js';
 }
 
-function json($name){
-  return URL . '/Public/json/' . strtolower($name) . '.json';
+function href($query){
+  return URL . $query;
+}
+
+function redirect($query = NULL){
+  Header('Location:' . URL . $query);
+  exit;
 }
