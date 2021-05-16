@@ -1,16 +1,12 @@
 <?php
 
-class FETCH{
+class CURL{
 
-  public static function URL_MAIN($query){
-    return API_MAIN_URL . API_MAIN_KEY . '/' . $query;
-  }
-
-  public static function GET($api){
+  public static function GET($url){
     $ch = curl_init();
 
     curl_setopt_array($ch, [
-      CURLOPT_URL => $api,
+      CURLOPT_URL => $url,
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_REFERER => 'https://www.google.com/',
       CURLOPT_USERAGENT => $_SERVER['HTTP_USER_AGENT']
@@ -24,11 +20,11 @@ class FETCH{
 
   }
 
-  public static function POST($api, $data){
+  public static function POST($url, $data){
     $ch = curl_init();
 
     curl_setopt_array($ch, [
-      CURLOPT_URL => $api,
+      CURLOPT_URL => $url,
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_POST => true,
       CURLOPT_POSTFIELDS => $data
@@ -40,10 +36,6 @@ class FETCH{
 
     return $source;
 
-  }
-
-  public static function POST_REACT(){
-    return json_encode(json_decode(file_get_contents("php://input"), true), JSON_UNESCAPED_UNICODE);
   }
 
 }

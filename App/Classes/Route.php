@@ -15,7 +15,7 @@ class Route{
     if(in_array($_SERVER['REQUEST_METHOD'], $method)){
 
       $patterns = [
-        '{url}' => '([0-9a-zA-Z]+)',
+        '{param}' => '([0-9a-zA-Z]+)',
         '{id}'  => '([0-9]+)'
       ];
       
@@ -24,7 +24,6 @@ class Route{
       $request_uri = self::parse_url();
       
       if(preg_match('@^' . $url . '$@', $request_uri, $parameters)){
-
         unset($parameters[0]);
 
         if(is_callable($callback)){
@@ -41,7 +40,7 @@ class Route{
 
         if(file_exists($controllerFile)){
           require_once($controllerFile);
-
+          
           call_user_func_array([new $className, $controller[1]], $parameters);
           exit;
         }
