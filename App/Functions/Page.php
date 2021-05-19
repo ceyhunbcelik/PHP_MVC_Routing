@@ -8,16 +8,16 @@ function container($name){
   return PATH . '/App/Subdomains/' . SUBDOMAIN . '/Containers/' . $name . '.php';
 }
 
-function img($name){
-  return URL . '/Public/' . SUBDOMAIN . '/img/' . strtolower($name);
+function img($name, $subdomain = SUBDOMAIN){
+  return URL . '/Public/' . $subdomain . '/img/' . strtolower($name);
 }
 
-function css($name){
-  return URL . '/Public/' . SUBDOMAIN . '/css/' . strtolower($name) . '.css';
+function css($name, $subdomain = SUBDOMAIN){
+  return URL . '/Public/' . $subdomain . '/css/' . strtolower($name) . '.css';
 }
 
-function js($name){
-  return URL . '/Public/' . SUBDOMAIN . '/js/' . strtolower($name) . '.js';
+function js($name, $subdomain = SUBDOMAIN){
+  return URL . '/Public/' . $subdomain . '/js/' . strtolower($name) . '.js';
 }
 
 function href($query){

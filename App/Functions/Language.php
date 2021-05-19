@@ -12,21 +12,22 @@ $lang_lib = [
 ];
 
 function language(){
-  if(isset($_SESSION['USER_LANGUAGE'])){
-    $lang = $_SESSION['USER_LANGUAGE'];
-  } else {
-    if(isset($_GET['lang'])){
 
-      global $lang_lib;
+  if(isset($_GET['lang'])){
+  
+    global $lang_lib;
 
-      $get = mb_strtolower($_GET['lang']);
-      $lang = in_array($get, array_keys($lang_lib)) ? $get : 'tr';
-    } else{
-      $lang = 'tr';
-    }
+    $get = mb_strtolower($_GET['lang']);
+    $lang = in_array($get, array_keys($lang_lib)) ? $get : 'tr';
+
+    $_SESSION['LANGUAGE'] = $lang;
   }
 
-  return $lang;
+  if(!isset($_SESSION['LANGUAGE'])){
+    $_SESSION['LANGUAGE'] = 'tr';
+  }
+
+  return $_SESSION['LANGUAGE'];
 }
 
 function translate($param, $lang = NULL){

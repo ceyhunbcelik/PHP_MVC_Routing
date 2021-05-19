@@ -14,6 +14,10 @@ class Route{
 
     if(in_array($_SERVER['REQUEST_METHOD'], $method)){
 
+      if(in_array('POST', $method)){
+        Session::Token();
+      }
+
       $patterns = [
         '{param}' => '([0-9a-zA-Z]+)',
         '{id}'  => '([0-9]+)'
