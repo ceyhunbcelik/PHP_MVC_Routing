@@ -8,7 +8,9 @@ class Route{
 
   public static function run($url, $callback, $method = 'GET', $session = 0){
 
-    $session ? Session::In() : Session::Out(); 
+    $session = explode('|', $session);
+
+    intval($session[0]) ? Session::In($session[1]) : Session::Out($session[1]);
 
     $method = explode('|', strtoupper($method));
 

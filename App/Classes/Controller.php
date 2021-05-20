@@ -3,11 +3,9 @@
 class Controller{
 
   public function view($name, $data = []){
-
-    global $lang_list;
-    
     extract($data);
     require_once(PATH . '/App/Subdomains/' . SUBDOMAIN . '/Views/' . $name . '.php');
+    exit;
   }
 
   public function model($name){
