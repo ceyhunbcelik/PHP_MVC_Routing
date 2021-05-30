@@ -6,17 +6,20 @@ class Route{
     return COUNT(ROUTE) == 1 && ROUTE[0] == 'index' ? '/' : '/' . implode('/', ROUTE);
   }
 
-  public static function run($url, $callback, $method = 'GET', $session = 0){
+  public static function run($url, $callback, $method = 'GET', $session){
 
-    $session = explode('|', $session);
+    $request_uri = self::parse_url();
 
-    intval($session[0]) ? Session::In($session[1]) : Session::Out($session[1]);
+    if($request_uri == $url){
+      $session = explode('|', $session);
+      intval($session[0]) ? Session::In($session[1]) : Session::Out($session[1]);
+    }
 
     $method = explode('|', strtoupper($method));
 
     if(in_array($_SERVER['REQUEST_METHOD'], $method)){
 
-      if(in_array('POST', $method)){
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         Session::Token();
       }
 
@@ -26,8 +29,6 @@ class Route{
       ];
       
       $url = str_replace(array_keys($patterns), array_values($patterns), $url);
-
-      $request_uri = self::parse_url();
       
       if(preg_match('@^' . $url . '$@', $request_uri, $parameters)){
         unset($parameters[0]);

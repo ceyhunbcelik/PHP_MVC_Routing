@@ -2,37 +2,28 @@
 
 class Session{
 
-  public static function Start($user_id, $user_status, $user_language){
-
-    if($user_status == 2){
-      $_SESSION['USER_ID']       = $user_id;
-      $_SESSION['USER_LANGUAGE'] = $user_language;
-      redirect('dashboard');
-    } else{
-      session_destroy();
-      redirect();
-    }
-
-  }
-
   public static function Token(){
 
     if(!isset($_POST['_token'])){
-      die('Hello hacker :) Fuck off!');
+      die('What are you looking for?');
     }
 
     if($_POST['_token'] != $_SESSION['_token']){
-      die('Hello hacker :) Fuck off!');
+      die('Fuck off!');
     }
 
   }
 
-  public static function In(){
-    if(!isset($_SESSION['USER_ID'])) redirect();
+  public static function In($type){
+    switch ($type) {
+      case 'ADMIN' : return !isset($_SESSION['ADMIN_ID']) ? redirect() : 1;
+    }
   }
 
-  public static function Out(){
-    if(isset($_SESSION['USER_ID'])) redirect('dashboard');
+  public static function Out($type){
+    switch ($type) {
+      case 'ADMIN' : return isset($_SESSION['ADMIN_ID']) ? redirect('dashboard') : 1;
+    }
   }
 
 }
