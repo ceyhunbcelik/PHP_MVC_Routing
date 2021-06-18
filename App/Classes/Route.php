@@ -10,6 +10,8 @@ class Route{
 
     $request_uri = self::parse_url();
 
+    echo $request_uri . ' - ' . $url . '<br>';
+
     if($request_uri == $url){
       $session = explode('|', $session);
       intval($session[0]) ? Session::In($session[1]) : Session::Out($session[1]);
