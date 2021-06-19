@@ -16,16 +16,15 @@ class Route{
     $parse_url = self::parse_url();
     $url       = str_replace(array_keys($patterns), array_values($patterns), $url);
 
-    if(preg_match('@^' . $url . '$@', $parse_url, $parameters)){
+    $method = explode('|', strtoupper($method));
+    
+    if(preg_match('@^' . $url . '$@', $parse_url, $parameters) && in_array($_SERVER['REQUEST_METHOD'], $method)){
       
       unset($parameters[0]);
 
       $session    = explode('|', $session);
       $session[0] = intval($session[0]);
       $session[0] ? Session::In($session[1]) : Session::Out($session[1]);
-
-      $method = explode('|', strtoupper($method));
-      if(!in_array($_SERVER['REQUEST_METHOD'], $method)) exit;
 
       if($_SERVER['REQUEST_METHOD'] == 'POST') Session::Token();
 
