@@ -8,6 +8,10 @@ function container($name){
   return PATH . '/App/Subdomains/' . SUBDOMAIN . '/Containers/' . $name . '.php';
 }
 
+function icon($name, $subdomain = SUBDOMAIN){
+  return URL . '/Public/' . $subdomain . '/icon/' . strtolower($name) . '.png';
+}
+
 function img($name, $subdomain = SUBDOMAIN){
   return URL . '/Public/' . $subdomain . '/img/' . strtolower($name);
 }
@@ -20,7 +24,7 @@ function js($name, $subdomain = SUBDOMAIN){
   return URL . '/Public/' . $subdomain . '/js/' . strtolower($name) . '.js';
 }
 
-function href($query){
+function href($query = NULL){
   return URL . $query;
 }
 
