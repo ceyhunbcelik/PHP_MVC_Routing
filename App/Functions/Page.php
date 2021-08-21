@@ -45,3 +45,7 @@ function routes($path){
 
   }
 }
+
+function filter_sql_space($data){
+  return str_replace('  ', '', $data);
+}
