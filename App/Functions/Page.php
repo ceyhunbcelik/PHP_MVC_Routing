@@ -8,8 +8,8 @@ function container($name){
   return PATH . '/App/Subdomains/' . SUBDOMAIN . '/Containers/' . $name . '.php';
 }
 
-function icon($name, $subdomain = SUBDOMAIN){
-  return URL . '/Public/' . $subdomain . '/icon/' . strtolower($name) . '.png';
+function icon($name){
+  return URL . '/Public/common/icon/' . strtolower($name) . '.png';
 }
 
 function img($name, $subdomain = SUBDOMAIN){
@@ -31,21 +31,4 @@ function href($query = NULL){
 function redirect($query = NULL){
   Header('Location:' . URL . $query);
   exit;
-}
-
-function routes($path){
-
-  foreach (glob($path . '*') as $value) {
-    $explode_path = explode('/', $value);
-    $end_path = end($explode_path);
-
-    isset(explode('.', $end_path)[1]) == 'php'
-      ? require_once($value)
-      : routes($path . $end_path . '/');
-
-  }
-}
-
-function filter_sql_space($data){
-  return str_replace('  ', '', $data);
 }
