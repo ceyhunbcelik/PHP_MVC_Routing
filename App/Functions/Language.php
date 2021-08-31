@@ -26,7 +26,7 @@ function translate($param, $lang = NULL){
   
   global $language_library;
 
-  $lang = is_null($lang) ? (isset($_SESSION['LANGUAGE']) ? $_SESSION['LANGUAGE'] : language()) : $lang;
+  $lang = is_null($lang) ? (isset($_SESSION['USER']['LANGUAGE']) ? $_SESSION['USER']['LANGUAGE'] : language()) : $lang;
 
   return isset($language_library[$param]) ? $language_library[$param][$lang] : $language_library['invalid_translate'][$lang];
 
