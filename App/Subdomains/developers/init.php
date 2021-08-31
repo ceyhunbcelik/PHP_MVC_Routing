@@ -1,3 +1,3 @@
 <?php
 
-routes(__DIR__ . '/Routes/');
+Route::run('/', 'Welcome@index', 'GET', '0|USER');
