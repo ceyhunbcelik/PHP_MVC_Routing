@@ -8,6 +8,10 @@ function container($name){
   return PATH . '/App/Subdomains/' . SUBDOMAIN . '/Containers/' . $name . '.php';
 }
 
+function route($name){
+  return PATH . '/App/Subdomains/' . SUBDOMAIN . '/Routes/' . $name . '.php';
+}
+
 function icon($name){
   return URL . '/Public/common/icon/' . strtolower($name) . '.png';
 }
