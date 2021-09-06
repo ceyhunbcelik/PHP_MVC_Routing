@@ -1,6 +1,6 @@
 <?php
 
-function seflink($str){
+function seflink(string $str){
   // character low
   $str = mb_strtolower($str, 'UTF-8');
 

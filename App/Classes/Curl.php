@@ -2,7 +2,7 @@
 
 class CURL{
 
-  public static function GET($url){
+  public static function GET(string $url){
     $ch = curl_init();
 
     curl_setopt_array($ch, [
@@ -20,7 +20,7 @@ class CURL{
 
   }
 
-  public static function POST($url, $data){
+  public static function POST(string $url, array $data){
     $ch = curl_init();
 
     curl_setopt_array($ch, [

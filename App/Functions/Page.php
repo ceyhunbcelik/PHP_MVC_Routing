@@ -1,38 +1,38 @@
 <?php
 
-function component($name){
+function component(string $name){
   return PATH . '/App/Subdomains/' . SUBDOMAIN . '/Components/' . $name . '.php';
 }
 
-function container($name){
+function container(string $name){
   return PATH . '/App/Subdomains/' . SUBDOMAIN . '/Containers/' . $name . '.php';
 }
 
-function route($name){
+function route(string $name){
   return PATH . '/App/Subdomains/' . SUBDOMAIN . '/Routes/' . $name . '.php';
 }
 
-function icon($name){
+function icon(string $name){
   return URL . '/Public/common/icon/' . strtolower($name) . '.png';
 }
 
-function img($name, $subdomain = SUBDOMAIN){
-  return URL . '/Public/' . $subdomain . '/img/' . strtolower($name);
+function img(string $name){
+  return URL . '/Public/' . SUBDOMAIN . '/img/' . strtolower($name);
 }
 
-function css($name, $subdomain = SUBDOMAIN){
-  return URL . '/Public/' . $subdomain . '/css/' . strtolower($name) . '.css';
+function css(string $name){
+  return URL . '/Public/' . SUBDOMAIN . '/css/' . strtolower($name) . '.css';
 }
 
-function js($name, $subdomain = SUBDOMAIN){
-  return URL . '/Public/' . $subdomain . '/js/' . strtolower($name) . '.js';
+function js(string $name){
+  return URL . '/Public/' . SUBDOMAIN . '/js/' . strtolower($name) . '.js';
 }
 
-function href($query = NULL){
+function href(string $query = NULL){
   return URL . $query;
 }
 
-function redirect($query = NULL){
+function redirect(string $query = NULL){
   Header('Location:' . URL . $query);
   exit;
 }

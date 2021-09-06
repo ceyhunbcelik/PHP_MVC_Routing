@@ -6,7 +6,7 @@ class Route{
     return COUNT(ROUTE) == 1 && ROUTE[0] == 'index' ? '/' : '/' . implode('/', ROUTE);
   }
 
-  public static function run($url, $callback, $method = 'GET', $session){
+  public static function run(string $url, string $callback, string $method = 'GET', string $session){
 
     $patterns = [
       '{param}' => '([0-9a-zA-Z-]+)',
