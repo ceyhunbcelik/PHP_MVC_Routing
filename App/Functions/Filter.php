@@ -1,6 +1,6 @@
 <?php
 
-function filter_name_surname($data){
+function filter_null($data){
     return strlen($data) != 0 ? $data : 0;
 }
 

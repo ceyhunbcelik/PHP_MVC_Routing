@@ -13,19 +13,19 @@ function route(string $name){
 }
 
 function icon(string $name){
-  return URL . '/Public/common/icon/' . strtolower($name) . '.png';
+  return URL . 'Public/common/icon/' . strtolower($name) . '.png';
 }
 
 function img(string $name){
-  return URL . '/Public/' . SUBDOMAIN . '/img/' . strtolower($name);
+  return URL . 'Public/' . SUBDOMAIN . '/img/' . strtolower($name);
 }
 
 function css(string $name){
-  return URL . '/Public/' . SUBDOMAIN . '/css/' . strtolower($name) . '.css';
+  return URL . 'Public/' . SUBDOMAIN . '/css/' . strtolower($name) . '.css';
 }
 
 function js(string $name){
-  return URL . '/Public/' . SUBDOMAIN . '/js/' . strtolower($name) . '.js';
+  return URL . 'Public/' . SUBDOMAIN . '/js/' . strtolower($name) . '.js';
 }
 
 function href(string $query = NULL){
@@ -35,4 +35,25 @@ function href(string $query = NULL){
 function redirect(string $query = NULL){
   Header('Location:' . URL . $query);
   exit;
+}
+
+function seflink(string $str){
+  // character low
+  $str = mb_strtolower($str, 'UTF-8');
+
+  // convert turkish character to english character
+  $str = str_replace(
+    ['ı', 'ğ', 'ü', 'ç', 'ö', 'ş', '#'],
+    ['i', 'g', 'u', 'c', 'o', 's', 'sharp'],
+    $str
+  );
+
+  // convert everything to hyphen except numbers and characters.
+  $str = preg_replace('/[^a-z0-9]/', '-', $str);
+
+  // only 1 hyphen
+  $str = preg_replace('/-+/', '-', $str);
+
+  // trim for unnecessary hyphen
+  return trim($str, '-');
 }

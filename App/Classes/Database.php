@@ -1,6 +1,6 @@
 <?php
 
-class Database{
+class Database extends SQL{
 
   protected $db;
 

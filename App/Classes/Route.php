@@ -6,7 +6,7 @@ class Route{
     return COUNT(ROUTE) == 1 && ROUTE[0] == 'index' ? '/' : '/' . implode('/', ROUTE);
   }
 
-  public static function run(string $url, string $callback, string $method = 'GET', string $session){
+  public static function run(string $url, string $callback, string $method = 'GET', string $session = NULL){
 
     $patterns = [
       '{param}' => '([0-9a-zA-Z-]+)',
@@ -22,11 +22,13 @@ class Route{
       
       unset($parameters[0]);
 
-      $session    = explode('|', $session);
-      $session[0] = intval($session[0]);
-      $session[0] ? Session::In($session[1]) : Session::Out($session[1]);
-
-      if($_SERVER['REQUEST_METHOD'] == 'POST') Session::Token();
+      if($session != NULL){
+        $session    = explode('|', $session);
+        $session[0] = intval($session[0]);
+        $session[0] ? Session::In($session[1]) : Session::Out($session[1]);
+        
+        if($_SERVER['REQUEST_METHOD'] == 'POST') Session::Token();
+      }
 
       if(is_callable($callback)){
         call_user_func_array($callback, $parameters);

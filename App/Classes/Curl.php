@@ -8,7 +8,7 @@ class CURL{
     curl_setopt_array($ch, [
       CURLOPT_URL => $url,
       CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_REFERER => 'https://www.google.com/',
+      // CURLOPT_REFERER => 'https://www.google.com/',
       CURLOPT_USERAGENT => $_SERVER['HTTP_USER_AGENT']
     ]);
 
@@ -17,7 +17,6 @@ class CURL{
     curl_close($ch);
 
     return $source;
-
   }
 
   public static function POST(string $url, array $data){
@@ -35,7 +34,6 @@ class CURL{
     curl_close($ch);
 
     return $source;
-
   }
 
 }

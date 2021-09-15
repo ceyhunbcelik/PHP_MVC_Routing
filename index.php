@@ -3,6 +3,7 @@
 session_start();
 
 $_GET = array_map(function($get){ return htmlspecialchars(trim($get)); }, $_GET);
+// $_POST = json_decode(file_get_contents("php://input"),true); # API
 
 $developer = [
   'status'    => 1,
